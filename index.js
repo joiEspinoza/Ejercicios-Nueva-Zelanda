@@ -179,6 +179,45 @@ const plusArray = ( array = [] ) => ( array.reduce( ( acu, dato ) => acu + dato 
 
 
 
+/////////////////// Ejercicio N8 /////////////////////////
+
+
+//--- Sumar el contenido de un arreglo donde sus ids sean iguales y eliminar repetidos  ---//
+
+
+const plusAndRemoveDuplicat = ( array = [] ) => array.reduce( ( acu, element ) => 
+{
+
+    const exist = acu.find( ( acuElement ) => acuElement.id === element.id )
+    
+    if( exist )
+    {
+        return acu.map( ( acuElement ) => 
+        {
+
+            if( acuElement.id === element.id )
+            {
+                return { ...element, total : acuElement.total + element.total  };
+            };
+
+            return acuElement;
+
+        })
+    }
+    
+    
+    return [ ...acu, element ];
+
+
+} ,[]);
+
+
+//////////////////////////////////////////////////////////
+
+
+
+//************************************************************************************************************* */
+
 
 
 ////////////////// Resultados ////////////////
@@ -218,5 +257,22 @@ console.log( `Result T6 : ${ isPalindrome( palindrome ) }` );
 
 //--- Sumar el contenido de un arreglo  ---//
 console.log( `Result T7 : ${ plusArray( [ 1,2,3,4,5,6,7,8,9 ] ) }` );
+
+
+//--- Sumar el contenido de un arreglo donde sus ids sean iguales y eliminar repetidos  ---//
+
+const test = 
+[
+
+    { id : 1, total : 100 },
+    { id : 1, total : 100 },
+    { id : 3, total : 300 },
+    { id : 4, total : 400 }
+
+];
+
+console.log( "Result T8 : " )
+console.log( plusAndRemoveDuplicat( test )  );
+
 
 ////////////////////////////////////////////////
